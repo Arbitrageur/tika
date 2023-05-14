@@ -69,9 +69,9 @@ fi
 case "$subcommand" in
   build)
     # Build slim version with minimal dependencies
-    docker build -t apache/tika:${version} --build-arg TIKA_VERSION=${version} --build-arg TIKA_JAR_NAME=${jar} - < minimal/Dockerfile --no-cache
+    docker build -t arbitrageur/tika:${version} --build-arg TIKA_VERSION=${version} --build-arg TIKA_JAR_NAME=${jar} - < minimal/Dockerfile --no-cache
     # Build full version with OCR, Fonts and GDAL
-    docker build -t apache/tika:${version}-full --build-arg TIKA_VERSION=${version} --build-arg TIKA_JAR_NAME=${jar} - < full/Dockerfile --no-cache
+    docker build -t arbitrageur/tika:${version}-full --build-arg TIKA_VERSION=${version} --build-arg TIKA_JAR_NAME=${jar} - < full/Dockerfile --no-cache
     ;;
 
   test)

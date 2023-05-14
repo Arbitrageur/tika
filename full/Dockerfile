@@ -40,8 +40,8 @@ RUN wget -t 10 --no-check-certificate --max-redirect 1 --retry-connrefused $ARCH
 RUN wget -t 10 --no-check-certificate --max-redirect 1 --retry-connrefused $ARCHIVE_TIKA_SERVER_ASC_URL -O /${TIKA_JAR_NAME}-${TIKA_VERSION}.jar.asc || rm /${TIKA_JAR_NAME}-${TIKA_VERSION}.jar.asc 
 
 RUN if [ "$CHECK_SIG" = "true" ] ; then \
-        wget -t 10 --no-check-certificate --max-redirect 1 --retry-connrefused -q -O keys.gpg https://downloads.apache.org/tika/KEYS \
-        gpg --import keys.gpg \
+        wget -t 10 --no-check-certificate --max-redirect 1 --retry-connrefused -q -O keys.gpg https://downloads.apache.org/tika/KEYS; \
+        gpg --import keys.gpg; \
         gpg --verify /${TIKA_JAR_NAME}-${TIKA_VERSION}.jar.asc /${TIKA_JAR_NAME}-${TIKA_VERSION}.jar; \
     fi
 
